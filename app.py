@@ -24,9 +24,21 @@ st.set_page_config(
 # Dark mode custom CSS (reused from Zendesk dashboard)
 st.markdown("""
 <style>
-    /* Main background */
+    /* Main background - force wide layout to prevent squishing */
     .stApp {
         background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+        min-width: 1200px;
+    }
+
+    /* Force columns to stay horizontal and not collapse */
+    [data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+        gap: 1rem;
+    }
+
+    [data-testid="stColumn"] {
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
     }
 
     /* Hide Streamlit branding */
